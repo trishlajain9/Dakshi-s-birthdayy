@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Dakshiii ❤️ </title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Caveat:wght@500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+</head>
+<body>
+
+<div class="stars" id="stars"></div>
+
+<!-- ===================== PASSCODE GATE ===================== -->
+<div class="pass-gate" id="passGate">
+
+  <!-- entry view -->
+  <div class="gate-view" id="gateEntry">
+    <svg class="scallop-frame" viewBox="0 0 200 200">
+      <g fill="var(--lavender)">
+        <circle cx="158" cy="100" r="26"/><circle cx="150.2" cy="129" r="26"/>
+        <circle cx="129" cy="150.2" r="26"/><circle cx="100" cy="158" r="26"/>
+        <circle cx="71" cy="150.2" r="26"/><circle cx="49.8" cy="129" r="26"/>
+        <circle cx="42" cy="100" r="26"/><circle cx="49.8" cy="71" r="26"/>
+        <circle cx="71" cy="49.8" r="26"/><circle cx="100" cy="42" r="26"/>
+        <circle cx="129" cy="49.8" r="26"/><circle cx="150.2" cy="71" r="26"/>
+      </g>
+      <circle cx="100" cy="100" r="52" fill="#fff"/>
+      <g transform="translate(64,66) scale(0.62)">
+        <ellipse cx="50" cy="60" rx="32" ry="38" fill="#8B6FC9"/>
+        <ellipse cx="50" cy="66" rx="20" ry="26" fill="#FFFBF0"/>
+        <ellipse cx="28" cy="52" rx="8" ry="14" fill="#8B6FC9" transform="rotate(-20 28 52)"/>
+        <ellipse cx="72" cy="52" rx="8" ry="14" fill="#8B6FC9" transform="rotate(20 72 52)"/>
+        <circle cx="41" cy="38" r="4" fill="#4A3F6B"/><circle cx="59" cy="38" r="4" fill="#4A3F6B"/>
+        <path d="M45 46 L55 46 L50 53 Z" fill="#F4C95D"/>
+        <ellipse cx="38" cy="98" rx="7" ry="4" fill="#F4C95D"/><ellipse cx="62" cy="98" rx="7" ry="4" fill="#F4C95D"/>
+      </g>
+      <g>
+        <circle cx="52" cy="55" r="6" fill="var(--pink)"/><circle cx="46" cy="60" r="5" fill="var(--gold)"/>
+        <circle cx="148" cy="140" r="6" fill="var(--gold)"/><circle cx="154" cy="135" r="5" fill="var(--pink)"/>
+      </g>
+    </svg>
+    <div class="eyebrow">A little something, locked away</div>
+    <h2 style="margin-bottom:4px;">Enter the passcode</h2>
+    <div class="digit-boxes" id="digitBoxes">
+      <div class="digit-box"></div><div class="digit-box"></div>
+      <div class="digit-box"></div><div class="digit-box"></div>
+    </div>
+    <div class="keypad">
+      <button onclick="pressKey('1')">1</button><button onclick="pressKey('2')">2</button><button onclick="pressKey('3')">3</button>
+      <button onclick="pressKey('4')">4</button><button onclick="pressKey('5')">5</button><button onclick="pressKey('6')">6</button>
+      <button onclick="pressKey('7')">7</button><button onclick="pressKey('8')">8</button><button onclick="pressKey('9')">9</button>
+      <button class="keypad-back" onclick="pressBack()">⌫</button><button onclick="pressKey('0')">0</button><span></span>
+    </div>
+  </div>
+
+  <!-- wrong passcode view -->
+  <div class="gate-view" id="gateWrong" style="display:none;">
+    <div class="bubble-title" style="font-size:32px;">
+      <span style="color:var(--pink)">W</span><span style="color:var(--gold)">R</span><span style="color:var(--lavender-deep)">O</span><span style="color:var(--pink)">N</span><span style="color:var(--gold)">G</span>
+      <br>
+      <span style="color:var(--lavender-deep)">P</span><span style="color:var(--pink)">A</span><span style="color:var(--gold)">S</span><span style="color:var(--lavender-deep)">S</span><span style="color:var(--pink)">C</span><span style="color:var(--gold)">O</span><span style="color:var(--lavender-deep)">D</span><span style="color:var(--pink)">E</span><span style="color:var(--gold)">!</span>
+    </div>
+    <svg class="confused-mascot" viewBox="0 0 100 120">
+      <text x="50" y="18" text-anchor="middle" font-size="26" fill="var(--pink)">?</text>
+      <g transform="translate(0,10)">
+        <ellipse cx="50" cy="60" rx="32" ry="38" fill="#8B6FC9"/>
+        <ellipse cx="50" cy="66" rx="20" ry="26" fill="#FFFBF0"/>
+        <ellipse cx="28" cy="52" rx="8" ry="14" fill="#8B6FC9" transform="rotate(-20 28 52)"/>
+        <ellipse cx="72" cy="52" rx="8" ry="14" fill="#8B6FC9" transform="rotate(20 72 52)"/>
+        <path d="M35 36 q6 6 12 0" stroke="#4A3F6B" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M53 36 q6 6 12 0" stroke="#4A3F6B" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M45 46 L55 46 L50 53 Z" fill="#F4C95D"/>
+        <ellipse cx="38" cy="98" rx="7" ry="4" fill="#F4C95D"/><ellipse cx="62" cy="98" rx="7" ry="4" fill="#F4C95D"/>
+      </g>
+    </svg>
+    <button class="btn" onclick="resetGate()" style="margin-top:12px;">Try Again</button>
+  </div>
+
+</div>
+<!-- =================== END PASSCODE GATE =================== -->
+
+<button class="nav-arrow prev" id="prevBtn" aria-label="Previous" style="display:none;">←</button>
+<button class="nav-arrow next" id="nextBtn" aria-label="Next" style="display:none;">→</button>
+
+<div class="stage" id="stage" style="display:none;">
+
+  <!-- 0 : LOCK SCREEN -->
+  <section class="card active" data-step="0">
+    <div id="askView">
+      <div class="lock-icon">🔒</div>
+      <svg class="giraffe" viewBox="0 0 100 110"><ellipse cx="50" cy="60" rx="32" ry="38" fill="#8B6FC9"/><ellipse cx="50" cy="66" rx="20" ry="26" fill="#FFFBF0"/><ellipse cx="28" cy="52" rx="8" ry="14" fill="#8B6FC9" transform="rotate(-20 28 52)"/><ellipse cx="72" cy="52" rx="8" ry="14" fill="#8B6FC9" transform="rotate(20 72 52)"/><circle cx="41" cy="38" r="4" fill="#4A3F6B"/><circle cx="59" cy="38" r="4" fill="#4A3F6B"/><path d="M45 46 L55 46 L50 53 Z" fill="#F4C95D"/><ellipse cx="38" cy="98" rx="7" ry="4" fill="#F4C95D"/><ellipse cx="62" cy="98" rx="7" ry="4" fill="#F4C95D"/></svg>
+      <div class="eyebrow">A little something</div>
+      <h1>I made something<br>special for Youu...</h1>
+      <p>do you wanna see it?</p>
+      <div class="yesno-row">
+        <button class="btn" onclick="goTo(1)">YESS </button>
+        <button class="btn ghost" onclick="showNoView()"> NO </button>
+      </div>
+    </div>
+
+    <div id="noView" style="display:none;">
+      <svg class="giraffe" viewBox="0 0 100 110"><ellipse cx="50" cy="60" rx="32" ry="38" fill="#8B6FC9"/><ellipse cx="50" cy="66" rx="20" ry="26" fill="#FFFBF0"/><ellipse cx="28" cy="52" rx="8" ry="14" fill="#8B6FC9" transform="rotate(-20 28 52)"/><ellipse cx="72" cy="52" rx="8" ry="14" fill="#8B6FC9" transform="rotate(20 72 52)"/>
+        <path d="M35 40 q6 -5 12 0" stroke="#4A3F6B" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M53 40 q6 -5 12 0" stroke="#4A3F6B" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M45 48 L55 48 L50 53 Z" fill="#F4C95D"/>
+        <ellipse cx="38" cy="98" rx="7" ry="4" fill="#F4C95D"/><ellipse cx="62" cy="98" rx="7" ry="4" fill="#F4C95D"/>
+        <ellipse cx="50" cy="70" rx="8" ry="6" fill="#8B6FC9"/>
+      </svg>
+      <h2 style="color:var(--pink);">Hmph! <br> How dare you!? 😠</h2>
+      <p>Wrong answer, try again 😤</p>
+      <button class="btn" onclick="showAskView()">Try Again</button>
+    </div>
+  </section>
+
+  <!-- 1 : HAPPY BIRTHDAY SPLASH -->
+  <section class="card" data-step="1">
+    <svg class="giraffe" style="width:66px;" viewBox="0 0 100 110"><ellipse cx="50" cy="60" rx="32" ry="38" fill="#8B6FC9"/><ellipse cx="50" cy="66" rx="20" ry="26" fill="#FFFBF0"/><ellipse cx="28" cy="52" rx="8" ry="14" fill="#8B6FC9" transform="rotate(-20 28 52)"/><ellipse cx="72" cy="52" rx="8" ry="14" fill="#8B6FC9" transform="rotate(20 72 52)"/><circle cx="41" cy="38" r="4" fill="#4A3F6B"/><circle cx="59" cy="38" r="4" fill="#4A3F6B"/><path d="M45 46 L55 46 L50 53 Z" fill="#F4C95D"/><ellipse cx="38" cy="98" rx="7" ry="4" fill="#F4C95D"/><ellipse cx="62" cy="98" rx="7" ry="4" fill="#F4C95D"/></svg>
+    <div class="bubble-title">
+      <span style="color:var(--gold)">H</span><span style="color:var(--lavender-deep)">A</span><span style="color:var(--pink)">P</span><span style="color:var(--gold)">P</span><span style="color:var(--lavender-deep)">Y</span>
+      <br>
+      <span style="color:var(--pink)">B</span><span style="color:var(--gold)">I</span><span style="color:var(--lavender-deep)">R</span><span style="color:var(--pink)">T</span><span style="color:var(--gold)">H</span><span style="color:var(--lavender-deep)">D</span><span style="color:var(--pink)">A</span><span style="color:var(--gold)">Y</span>
+    </div>
+    <div class="camera-frame">
+      <div class="camera-screen">
+        <div class="photo-slot" id="splash-photo"><div class="ph"><img src="assets/kidoo.jpeg" alt="Our photo 1"></div></div>
+      </div>
+    </div>
+    <p style="margin-top:14px;">Finallyy this kiddo has completed 19 years of being on this Earth⭐</p>
+    <button class="btn" onclick="goTo(2)">Next </button>
+  </section>
+
+  <!-- 2 : CAKE / BIRTHDAY REVEAL -->
+  <section class="card" data-step="2">
+    <div class="eyebrow">August 31st</div>
+    <h1>Happy Birthday<br>Dakshiii ♡ </h1>
+    <div class="cake-wrap">
+      <svg viewBox="0 0 180 150" width="100%">
+        <g id="candles">
+          <g class="candle" data-i="0" onclick="blow(0)">
+            <rect x="55" y="30" width="8" height="26" fill="#D9CBF2"/>
+            <path class="flame f0" d="M59 30 C55 22, 63 18, 59 8 C65 18, 63 24, 59 30 Z" fill="#F4C95D"/>
+          </g>
+          <g class="candle" data-i="1" onclick="blow(1)">
+            <rect x="86" y="22" width="8" height="34" fill="#D9CBF2"/>
+            <path class="flame f1" d="M90 22 C86 14, 94 10, 90 0 C96 10, 94 16, 90 22 Z" fill="#F4C95D"/>
+          </g>
+          <g class="candle" data-i="2" onclick="blow(2)">
+            <rect x="117" y="30" width="8" height="26" fill="#D9CBF2"/>
+            <path class="flame f2" d="M121 30 C117 22, 125 18, 121 8 C127 18, 125 24, 121 30 Z" fill="#F4C95D"/>
+          </g>
+        </g>
+        <rect x="35" y="56" width="110" height="30" rx="6" fill="#EFE0FB"/>
+        <rect x="25" y="86" width="130" height="34" rx="6" fill="#D9CBF2"/>
+        <rect x="15" y="120" width="150" height="26" rx="6" fill="#8B6FC9"/>
+        <circle cx="50" cy="70" r="3.5" fill="#F2A6B8"/>
+        <circle cx="90" cy="70" r="3.5" fill="#F4C95D"/>
+        <circle cx="130" cy="70" r="3.5" fill="#F2A6B8"/>
+      </svg>
+    </div>
+    <div class="wish-msg" id="wishMsg">click the candles, one by one 🕯️</div>
+    <p style="margin-top:6px;">a special message for you is coming up...</p>
+    <button class="btn" id="cakeNext" onclick="goTo(3)" disabled>Keep going </button>
+  </section>
+
+  <!-- 3 : COUPONS -->
+  <section class="card" data-step="3">
+    <div class="eyebrow">Redeemable anytime</div>
+    <h2>Birthday coupons..<br>JUST FOR YOUU</h2>
+    <p>Use them freely, I never run out when it comes to you 💗 <br>(tap to flip)</p>
+    <div class="coupon-grid">
+      <div class="coupon" onclick="this.classList.toggle('flipped')">
+        <div class="coupon-inner">
+          <div class="coupon-face coupon-front">Unlimited<br>Hugs🫂 &amp; Kisses💋</div>
+          <div class="coupon-face coupon-back">No expiry. Redeem whenever you miss me 🤍</div>
+        </div>
+      </div>
+      <div class="coupon" onclick="this.classList.toggle('flipped')">
+        <div class="coupon-inner">
+          <div class="coupon-face coupon-front">Whatever You<br>Say (and more) 🫡</div>
+          <div class="coupon-face coupon-back">Your wish is basically law. I'm not even mad about it <br> Get that in your mind !! </div>
+        </div>
+      </div>
+      <div class="coupon" onclick="this.classList.toggle('flipped')">
+        <div class="coupon-inner">
+          <div class="coupon-face coupon-front">All "Yes"<br>Hour 💃🏻</div>
+          <div class="coupon-face coupon-back">One full hour where I say yes to literally anything you propose.🥱</div>
+        </div>
+      </div>
+      <div class="coupon" onclick="this.classList.toggle('flipped')">
+        <div class="coupon-inner">
+          <div class="coupon-face coupon-front">Judgement-Free<br>Rant Session 👻</div>
+          <div class="coupon-face coupon-back">Vent about anything, anyone, anytime. I'm always on your side. 🤝🏻</div>
+        </div>
+      </div>
+    </div>
+    <button class="btn" onclick="goTo(4)" style="margin-top:8px;">Next </button>
+  </section>
+
+  <!-- 4 : NAME CARD -->
+  <section class="card" data-step="4">
+    <div class="name-flower">🌻</div>
+    <div class="eyebrow">This one's for</div>
+    <h1>Dakshitaa.<br>Dakshii.<br>My babydoll. </h1>
+    <p>however I say your name, it always means the same thing: my person. the one who stayed for SEVEN YEARS and counting.❤️‍🔥</p>
+    <button class="btn" onclick="goTo(5)">Next</button>
+  </section>
+
+  <!-- 5 : FLOWERS FOR YOU -->
+  <section class="card" data-step="5">
+    <div class="flower-blob">
+      <svg viewBox="0 0 240 90" style="width:100%; max-width:260px; display:block; margin:0 auto;">
+        <path id="arcText" d="M14,82 Q120,16 226,82" fill="none"/>
+        <text font-family="'Caveat',cursive" font-weight="700" font-size="19" fill="#D9607E">
+          <textPath href="#arcText" startOffset="50%" text-anchor="middle">Flowers for you 🌻</textPath>
+        </text>
+      </svg>
+      <img src="assets/flower-bouquet.gif" alt="Flowers for you" class="bouquet-gif">
+    </div>
+    <p style="margin-top:6px;">a cute bouquet, just because you deserve flowers everyday. <br> (This, bcoz any flower can die but not this) </p>
+    <button class="btn" onclick="goTo(6)" style="margin-top:6px;">Next</button>
+  </section>
+
+  <!-- 6 : ENVELOPE -->
+  <section class="card" data-step="6">
+    <div class="eyebrow">Open me</div>
+    <h2>One surprise<br>at a time</h2>
+    <div class="envelope-grid">
+      <div class="envelope-col">
+        <div class="env-mini" id="envMini1" onclick="openEnvelopeN(1)">
+          <div class="env-mini-back"></div>
+          <div class="env-mini-letter">tap ✉️</div>
+          <div class="env-mini-flap"></div>
+        </div>
+        <div class="env-hint-mini">surprise 1</div>
+        <div class="mini-note" id="miniNote1">"I love you so much more than you'll ever know... even in the smallest things, in the ways you don't think I notice."</div>
+      </div>
+      <div class="envelope-col">
+        <div class="env-mini" id="envMini2" onclick="openEnvelopeN(2)">
+          <div class="env-mini-back"></div>
+          <div class="env-mini-letter">tap ✉️</div>
+          <div class="env-mini-flap"></div>
+        </div>
+        <div class="env-hint-mini">surprise 2</div>
+        <div class="mini-note" id="miniNote2">"Seven years in, and it still feels like we mean too much to each other to ever let it fade."</div>
+      </div>
+      <div class="envelope-col">
+        <div class="env-mini" id="envMini3" onclick="openEnvelopeN(3)">
+          <div class="env-mini-back"></div>
+          <div class="env-mini-letter">tap ✉️</div>
+          <div class="env-mini-flap"></div>
+        </div>
+        <div class="env-hint-mini">surprise 3</div>
+        <div class="mini-note" id="miniNote3">"And if we ever do fade, I promise we'll find our way back to each other."</div>
+      </div>
+    </div>
+    <button class="btn" onclick="goTo(7)" style="margin-top:18px;">Next </button>
+  </section>
+
+  <!-- 7 : US IN EVERY ERA -->
+  <section class="card" data-step="7">
+    <div class="eyebrow">Seven years, many versions of us</div>
+    <h2>Us, in every era</h2>
+    <div class="collage">
+      <div class="ph"><img src="assets/2021.jpeg" alt="Our photo 1"></div>
+      <div class="ph"><img src="assets/2022.jpeg" alt="Our photo 2"></div>
+      <div class="ph"><img src="assets/20231.jpeg" alt="Our photo 3"></div>
+      <div class="ph"><img src="assets/2024.jpeg" alt="Our photo 4"></div>
+      <div class="ph"><img src="assets/2025.jpeg" alt="Our photo 5"></div>
+      <div class="ph"><img src="assets/2026.jpeg" alt="Our photo 6"></div>
+
+    </div>
+    <p style="margin-top:10px;">
+    <button class="btn" onclick="goTo(8)">Next </button>
+  </section>
+
+  <!-- 8 : MEMORIES GALLERY -->
+  <section class="card" data-step="8">
+    <div class="eyebrow">Search history: youu, always</div>
+    <h2>Memories</h2>
+    <div class="searchbar">🔍<input placeholder="Moments of us 🫂" disabled></div>
+    <div class="gallery-grid">
+      <div class="ph"><img src="assets/1.jpeg" alt="Our photo 1"></div>
+      <div class="ph"><img src="assets/3.jpeg" alt="Our photo 3"></div>
+      <div class="ph"><img src="assets/4.jpeg" alt="Our photo 4"></div>
+      <div class="ph"><img src="assets/6.jpeg" alt="Our photo 5"></div>
+      <div class="ph"><img src="assets/7.jpeg" alt="Our photo 1"></div>
+      <div class="ph"><img src="assets/8.jpeg" alt="Our photo 2"></div>
+      <div class="ph"><img src="assets/9.jpeg" alt="Our photo 3"></div>
+      <div class="ph"><img src="assets/10.jpeg" alt="Our photo 4"></div>
+      <div class="ph"><img src="assets/11.jpeg" alt="Our photo 5"></div>
+      <div class="ph"><img src="assets/12.jpeg" alt="Our photo 1"></div>
+      <div class="ph"><img src="assets/13.jpeg" alt="Our photo 2"></div>
+      <div class="ph"><img src="assets/14.jpeg" alt="Our photo 3"></div>
+      <div class="ph"><img src="assets/15.jpeg" alt="Our photo 4"></div>
+    </div>
+    <button class="btn" onclick="goTo(9)" style="margin-top:14px;">Next </button>
+  </section>
+
+  <!-- 9 : FRIENDSHIP LICENSE -->
+  <section class="card" data-step="9">
+    <div class="eyebrow">Officially certified</div>
+    <h2>Friendship<br>License</h2>
+    <p>(tap the card to flip it 👇)</p>
+    <div class="license-card" onclick="this.classList.toggle('flipped')">
+      <div class="license-inner">
+        <div class="license-face license-front">
+          <img src="assets/license-front.png" alt="Friendship License - front">
+        </div>
+        <div class="license-face license-back">
+          <img src="assets/license-back.png" alt="Friendship License - back">
+        </div>
+      </div>
+    </div>
+    <div class="license-hint">Dakshita &amp; Trishla for LIFE 💗</div>
+    <button class="btn" onclick="goTo(10)" style="margin-top:14px;">Next </button>
+  </section>
+
+  <!-- 10 : FINAL LETTER -->
+  <section class="card" data-step="10">
+    <div class="flowers">🌷🌼🌷</div>
+    <div class="eyebrow">My wish for YOU</div>
+    <h2>Dear Dakshiii</h2>
+    <div class="letter-text">
+      <p>Seven years ago the universe did me a favor and put you in my life and it's been quietly showing off about it ever since. You've seen me at my most unfiltered and stayed anyway , that's not a small thing, that's rare.</p>
+      <p>Today I hope you feel exactly how loved you are. I hope this year brings you calm mornings, ridiculous inside jokes, people who deserve you and every small joy you don't even ask for. You give so much to everyone around you....today and everyday is entirely yours.</p>
+      <p>No matter where life takes us or how far apart we end up, I want you to know that ... you will always be my person. <br>Here's to seven years down and to every single year after this one.</p>
+    </div>
+    <div class="signoff">I loveee youuu so much 💕<br> Happiestt Birthdayy 💃🏻 <br> LOVEE YOUU ENDLESSLYY !!</div>
+    <button class="btn" onclick="goTo(11)" style="margin-top:14px;">One last thing ...</button>
+  </section>
+
+  <!-- 11 : SONG -->
+  <section class="card" data-step="11">
+    <div class="eyebrow">Our song</div>
+    <h2>Tum mile<br>toh mil gaya yeh Jahan💛</h2>
+    <div class="song-wrap">
+      <iframe src="https://www.youtube.com/embed/odVptmgIcD0" title="Tum Mile" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <div class="song-label">here's to finding each other.... Happyyy Birthdayy MY 11:11  </div>
+    <button class="btn ghost" onclick="goTo(0)" style="margin-top:14px;">Watch it all again ↺</button>
+  </section>
+
+</div>
+
+<div class="dots" id="dots"></div>
+
+<script src="script.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>
+</body>
+</html>
